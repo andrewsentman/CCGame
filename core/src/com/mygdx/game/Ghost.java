@@ -5,12 +5,11 @@ public class Ghost extends Actor {
 	int targetY;
 	Pacman pacman;
 	StageTimer timer;
-	boolean inPen=true;
 	static int activeCounter=0;
 	Ghost(Pacman pacman, StageTimer timer)
 	{
 		super();
-		this.direction=Direction.UP;
+		this.direction=Direction.RIGHT;
 		this.pacman=pacman;
 		this.timer=timer;
 	}
@@ -19,23 +18,10 @@ public class Ghost extends Actor {
 	{
 		if ((this.pixelX!=3) || (this.pixelY!=3))
 		{
-			//return;
+			return;
 		}
-		if (this.timer.mode==StageTimer.SCATTER)
-		{
-			updateTargetScatter();
-		} else {
-			updateTarget();
-		}
-		if (this.inPen)
-		{
-			if (Stage.get(this.tileX, this.tileY-1)==1)
-				this.direction=Direction.UP;
-			if (Stage.get(this.tileX, this.tileY+1)==1)
-				this.direction=Direction.DOWN;
-		} else {
-			updateDirection();
-		}
+		updateTarget();
+		updateDirection();
 	}
 	void updateTargetScatter() 
 	{

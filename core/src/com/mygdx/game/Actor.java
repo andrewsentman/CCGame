@@ -67,7 +67,7 @@ public class Actor {
 		}
 	}
 	void move(int dir) {
-		if (Stage.get(this.tileX+Direction.oX[dir],this.tileY+Direction.oY[dir])==0 || 
+		if (Stage.get(this.tileX+Direction.oX[dir],this.tileY+Direction.oY[dir])!=1 || 
 									((lX[this.pixelX]==dir) || (lY[this.pixelY]==dir)))
 		{
 			this.pixelX+=Direction.oX[dir];

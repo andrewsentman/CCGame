@@ -95,10 +95,10 @@ import com.badlogic.gdx.math.Vector2;
                     inky = new Inky(pacman,timer,blinky);
                     clyde = new Clyde(pacman,timer);
                    
-                    blinky.put(14,19,0,3);
-                    pinky.put(14,16,0,3);
-                    inky.put(12,16,0,3);
-                    clyde.put(16,16,0,3);
+                    blinky.put(14,19,3,3);
+                    pinky.put(14,19,3,3);
+                    inky.put(14,19,3,3);
+                    clyde.put(14,19,3,3);
                     pacman.put(14,7,3,3);
             }
            
@@ -127,7 +127,7 @@ import com.badlogic.gdx.math.Vector2;
                     {
                     		pacman.joyLeft();
                     }
-                    //timer.tick();
+                    timer.tick();
                     pacman.tick();
                     blinky.tick();
                     pinky.tick();
@@ -211,10 +211,8 @@ import com.badlogic.gdx.math.Vector2;
                     ifont.draw(batch, ""+Stage.get(inky.tileX, inky.tileY-1), 420, 200);
                     ifont.draw(batch, ""+Stage.get(inky.tileX, inky.tileY+1), 420, 240);
                     ifont.draw(batch, "x", inky.targetX*8, inky.targetY*8+20);
-                    if (timer.mode!=StageTimer.SCATTER)
-                    {
-                    	ifont.draw(batch, "o", (pacman.tileX + 2*Direction.oX[pacman.direction])*8, (pacman.tileY + 2*Direction.oY[pacman.direction])*8+20);
-                    }
+                    
+                    ifont.draw(batch, "o", (pacman.tileX + 2*Direction.oX[pacman.direction])*8, (pacman.tileY + 2*Direction.oY[pacman.direction])*8+20);
                    
                     cfont.draw(batch, ""+clyde.tileX, 300, 140);
                     cfont.draw(batch, ""+clyde.tileY, 300, 100);
@@ -228,9 +226,9 @@ import com.badlogic.gdx.math.Vector2;
                     cfont.draw(batch, ""+Stage.get(clyde.tileX, clyde.tileY+1), 420, 140);
                     cfont.draw(batch, "x", clyde.targetX*8, clyde.targetY*8+20);
                     
-                    mfont.draw(batch, timer.mode==1?"Chase":"Scatter", 0,580);
-                    mfont.draw(batch, ""+timer.timeToNextMode/60, 60,580);
-                    mfont.draw(batch, ""+timer.timeToNextMode%60, 100,580);
+                    //mfont.draw(batch, ""+timer.mode, 0,580);
+                    mfont.draw(batch, ""+timer.ticks/60, 60,580);
+                    mfont.draw(batch, ""+timer.ticks%60, 100,580);
                     
 
                     mfont.draw(batch, "Score:"+score.score,0,420);
@@ -249,15 +247,12 @@ import com.badlogic.gdx.math.Vector2;
                     }
                     
                     batch.end();
-                    if (timer.mode!=StageTimer.SCATTER)
-                    {
-	                    ShapeRenderer sr = new ShapeRenderer();
-	                    sr.setColor(Color.CYAN);
-	
-	                    sr.begin(ShapeType.Line);
-	                    sr.line(inky.targetX*8+3,inky.targetY*8+11,blinky.tileX*8+3,blinky.tileY*8+11);
-	                    sr.end();
-                    }
+                    ShapeRenderer sr = new ShapeRenderer();
+                    sr.setColor(Color.CYAN);
+
+                    sr.begin(ShapeType.Line);
+                    sr.line(inky.targetX*8+3,inky.targetY*8+11,blinky.tileX*8+3,blinky.tileY*8+11);
+                    sr.end();
                     
             }
     }
