@@ -1,0 +1,89 @@
+
+pacmansprites1.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+stage
+  rotate: false
+  xy: 2, 2
+  size: 224, 248
+  orig: 224, 248
+  offset: 0, 0
+  index: -1
+clydeu
+  rotate: false
+  xy: 228, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+inkyu
+  rotate: false
+  xy: 228, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+blinkyu
+  rotate: false
+  xy: 228, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+pacmanc
+  rotate: false
+  xy: 228, 56
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+pinkyu
+  rotate: false
+  xy: 228, 74
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+pacmanua
+  rotate: false
+  xy: 228, 92
+  size: 13, 12
+  orig: 13, 12
+  offset: 0, 0
+  index: -1
+pacmanda
+  rotate: false
+  xy: 228, 106
+  size: 13, 12
+  orig: 13, 12
+  offset: 0, 0
+  index: -1
+pacmandb
+  rotate: false
+  xy: 228, 120
+  size: 13, 12
+  orig: 13, 12
+  offset: 0, 0
+  index: -1
+pacmanub
+  rotate: false
+  xy: 228, 134
+  size: 13, 12
+  orig: 13, 12
+  offset: 0, 0
+  index: -1
+powerup
+  rotate: false
+  xy: 246, 2
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+dot
+  rotate: false
+  xy: 2, 252
+  size: 2, 2
+  orig: 2, 2
+  offset: 0, 0
+  index: -1
