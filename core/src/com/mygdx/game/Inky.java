@@ -1,11 +1,13 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
 public class Inky extends Ghost{
 
 	Blinky blinky;
 
-	Inky(Pacman pacman, StageTimer timer, Blinky blinky) {
-		super(pacman,timer);
+	Inky(TextureRegion sprite, Pacman pacman, StageTimer timer, Blinky blinky) {
+		super(sprite, pacman,timer);
 		this.blinky=blinky;
 	}
 	@Override

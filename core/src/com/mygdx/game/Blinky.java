@@ -1,9 +1,11 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
 public class Blinky extends Ghost {
 
-	Blinky(Pacman pacman, StageTimer timer) {
-		super(pacman, timer);
+	Blinky(TextureRegion sprite, Pacman pacman, StageTimer timer) {
+		super(sprite, pacman, timer);
 	}
 	@Override
 	void updateTargetScatter()

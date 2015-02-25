@@ -91,11 +91,11 @@ import com.badlogic.gdx.math.Vector2;
                     
                     score = new Score();
                     
-                    pacman = new Pacman();
-                    blinky = new Blinky(pacman,timer);
-                    pinky = new Pinky(pacman,timer);
-                    inky = new Inky(pacman,timer,blinky);
-                    clyde = new Clyde(pacman,timer);
+                    pacman = new Pacman(pacmanSprite);
+                    blinky = new Blinky(blinkySprite, pacman,timer);
+                    pinky = new Pinky(pinkySprite, pacman,timer);
+                    inky = new Inky(inkySprite, pacman,timer,blinky);
+                    clyde = new Clyde(clydeSprite, pacman,timer);
                     
                     manager.addInputActor(pacman, 0);
                     manager.add(blinky);
@@ -118,22 +118,22 @@ import com.badlogic.gdx.math.Vector2;
             		}
                     if(Gdx.input.isKeyPressed(Keys.UP))
                     {
-                            pacman.joyUp();
+                            manager.sendInput(0, Direction.UP);
                     }
                    
                     if(Gdx.input.isKeyPressed(Keys.DOWN))
                     {
-                    		pacman.joyDown();
+                    		manager.sendInput(0, Direction.DOWN);
                     }
                    
                     if(Gdx.input.isKeyPressed(Keys.RIGHT))
                     {
-                    		pacman.joyRight();
+                    		manager.sendInput(0, Direction.RIGHT);
                     }
                    
                     if(Gdx.input.isKeyPressed(Keys.LEFT))
                     {
-                    		pacman.joyLeft();
+                    		manager.sendInput(0, Direction.LEFT);
                     }
                     timer.tick();
                     manager.tick();
@@ -161,13 +161,16 @@ import com.badlogic.gdx.math.Vector2;
                     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
                    
                     batch.begin();
-                   
+                    
                     batch.draw(stageSprite, 0,8);
-                    batch.draw(pacmanSprite, pacman.getScreenX(), pacman.getScreenY());
-                    batch.draw(blinkySprite, blinky.getScreenX(), blinky.getScreenY());
-                    batch.draw(pinkySprite, pinky.getScreenX(), pinky.getScreenY());
-                    batch.draw(inkySprite, inky.getScreenX(), inky.getScreenY());
-                    batch.draw(clydeSprite, clyde.getScreenX(), clyde.getScreenY());
+                    
+                    manager.draw(batch);
+                    
+                    //batch.draw(pacmanSprite, pacman.getScreenX(), pacman.getScreenY());
+                    //batch.draw(blinkySprite, blinky.getScreenX(), blinky.getScreenY());
+                    //batch.draw(pinkySprite, pinky.getScreenX(), pinky.getScreenY());
+                    //batch.draw(inkySprite, inky.getScreenX(), inky.getScreenY());
+                    //batch.draw(clydeSprite, clyde.getScreenX(), clyde.getScreenY());
                     
                     pfont.draw(batch, ""+pacman.tileX, 300, 540);
                     pfont.draw(batch, ""+pacman.tileY, 300, 500);

@@ -1,9 +1,11 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
 public class Clyde extends Ghost {
 
-	Clyde(Pacman pacman, StageTimer timer) {
-		super(pacman, timer);
+	Clyde(TextureRegion sprite, Pacman pacman, StageTimer timer) {
+		super(sprite, pacman, timer);
 	}
 	@Override
 	void updateTargetScatter()

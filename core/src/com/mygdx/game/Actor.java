@@ -1,5 +1,8 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
 public class Actor {
 
 	int pixelX;
@@ -7,11 +10,12 @@ public class Actor {
 	int tileX;
 	int tileY;
 	int direction;
+	TextureRegion sprite;
 	static final int[] lX= {0,0,0,4,2,2,2,2};
 	static final int[] lY= {3,3,3,4,1,1,1,1};
 
-	public Actor() {
-		super();
+	public Actor(TextureRegion sprite) {
+		this.sprite=sprite;
 	}
 
 	void put(int tx, int ty, int px, int py) {

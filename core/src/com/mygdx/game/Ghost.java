@@ -1,14 +1,16 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
 public class Ghost extends Actor {
 	int targetX;
 	int targetY;
 	Pacman pacman;
 	StageTimer timer;
 	static int activeCounter=0;
-	Ghost(Pacman pacman, StageTimer timer)
+	Ghost(TextureRegion sprite, Pacman pacman, StageTimer timer)
 	{
-		super();
+		super(sprite);
 		this.direction=Direction.RIGHT;
 		this.pacman=pacman;
 		this.timer=timer;

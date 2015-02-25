@@ -1,7 +1,10 @@
 package com.mygdx.game;
 
-public class Pacman extends Actor{
-	Pacman() {
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
+public class Pacman extends InputActor{
+	Pacman(TextureRegion sprite) {
+		super(sprite);
 		this.direction=Direction.LEFT;
 	}
 	void cornerX()
@@ -13,34 +16,6 @@ public class Pacman extends Actor{
 	{
 		if (this.pixelY<3) this.pixelY++;
 		if (this.pixelY>3) this.pixelY--;
-	}
-	void joyUp()
-	{
-		if (Stage.get(this.tileX,this.tileY+1)!=1 || this.pixelY<3)
-		{
-			this.direction=Direction.UP;
-		}
-	}
-	void joyDown()
-	{
-		if (Stage.get(this.tileX,this.tileY-1)!=1 || this.pixelY>3)
-		{
-			this.direction=Direction.DOWN;
-		}
-	}
-	void joyLeft()
-	{
-		if (Stage.get(this.tileX-1,this.tileY)!=1 || this.pixelX>3)
-		{
-			this.direction=Direction.LEFT;
-		}
-	}
-	void joyRight()
-	{
-		if (Stage.get(this.tileX+1,this.tileY)!=1 || this.pixelX<3)
-		{
-			this.direction=Direction.RIGHT;
-		}
 	}
 	@Override
 	void move(int dir) {
