@@ -8,9 +8,9 @@ public class Ghost extends Actor {
 	Pacman pacman;
 	StageTimer timer;
 	static int activeCounter=0;
-	Ghost(TextureRegion sprite, Pacman pacman, StageTimer timer)
+	Ghost(ActorManager manager, int sprite, Pacman pacman, StageTimer timer)
 	{
-		super(sprite);
+		super(manager,sprite);
 		this.direction=Direction.RIGHT;
 		this.pacman=pacman;
 		this.timer=timer;

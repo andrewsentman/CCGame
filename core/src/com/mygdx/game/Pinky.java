@@ -4,8 +4,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Pinky extends Ghost {
 
-	Pinky(TextureRegion sprite, Pacman pacman, StageTimer timer) {
-		super(sprite, pacman, timer);
+	Pinky(ActorManager manager, int sprite, Pacman pacman, StageTimer timer) {
+		super(manager,sprite, pacman, timer);
 	}
 	@Override
 	void updateTargetScatter()

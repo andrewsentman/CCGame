@@ -20,13 +20,6 @@ import com.badlogic.gdx.math.Vector2;
             SpriteBatch batch;
             TextureAtlas atlas;
             AtlasRegion stageSprite;
-            AtlasRegion pacmanSprite;
-            AtlasRegion blinkySprite;
-            AtlasRegion pinkySprite;
-            AtlasRegion inkySprite;
-            AtlasRegion clydeSprite;
-            AtlasRegion dotSprite;
-            AtlasRegion powerupSprite;
             Pacman pacman;
             Blinky blinky;
             Pinky pinky;
@@ -50,7 +43,8 @@ import com.badlogic.gdx.math.Vector2;
             int u=0;
            
             Vector2 pixelLocation = new Vector2(0, 0);
-			ActorManager manager;
+			ActorManager actorManager;
+			GfxManager gfxManager;
            
             @Override
             public void create () {
@@ -77,31 +71,34 @@ import com.badlogic.gdx.math.Vector2;
                    
                     batch = new SpriteBatch();
                     stageSprite = atlas.findRegion("stage");
-                    pacmanSprite = atlas.findRegion("pacmanc");
-                    blinkySprite = atlas.findRegion("blinkyu");
-                    pinkySprite = atlas.findRegion("pinkyu");
-                    inkySprite = atlas.findRegion("inkyu");
-                    clydeSprite = atlas.findRegion("clydeu");
-                    dotSprite = atlas.findRegion("dot");
-                    powerupSprite = atlas.findRegion("powerup"); 
                     
-                    manager=new ActorManager();
+                    gfxManager=new GfxManager();
+                    
+                    gfxManager.add(atlas.findRegion("pacmanc"), Constants.SPRITE_PACMAN);
+                    gfxManager.add(atlas.findRegion("blinkyu"), Constants.SPRITE_BLINKY);
+                    gfxManager.add(atlas.findRegion("pinkyu"), Constants.SPRITE_PINKY);
+                    gfxManager.add(atlas.findRegion("inkyu"), Constants.SPRITE_INKY);
+                    gfxManager.add(atlas.findRegion("clydeu"), Constants.SPRITE_CLYDE);
+                    gfxManager.add(atlas.findRegion("dot"), Constants.SPRITE_DOT);
+                    gfxManager.add(atlas.findRegion("powerup"), Constants.SPRITE_POWERUP);
+                    
+                    actorManager=new ActorManager(gfxManager);
                     
                     timer = new StageTimer(1);
                     
                     score = new Score();
                     
-                    pacman = new Pacman(pacmanSprite);
-                    blinky = new Blinky(blinkySprite, pacman,timer);
-                    pinky = new Pinky(pinkySprite, pacman,timer);
-                    inky = new Inky(inkySprite, pacman,timer,blinky);
-                    clyde = new Clyde(clydeSprite, pacman,timer);
+                    pacman = new Pacman(actorManager,Constants.SPRITE_PACMAN);
+                    blinky = new Blinky(actorManager,Constants.SPRITE_BLINKY, pacman,timer);
+                    pinky = new Pinky(actorManager,Constants.SPRITE_PINKY, pacman,timer);
+                    inky = new Inky(actorManager,Constants.SPRITE_INKY, pacman,timer,blinky);
+                    clyde = new Clyde(actorManager,Constants.SPRITE_CLYDE, pacman,timer);
                     
-                    manager.addInputActor(pacman, 0);
-                    manager.add(blinky);
-                    manager.add(pinky);
-                    manager.add(inky);
-                    manager.add(clyde);
+                    actorManager.addInputActor(pacman, 0);
+                    actorManager.add(blinky);
+                    actorManager.add(pinky);
+                    actorManager.add(inky);
+                    actorManager.add(clyde);
                    
                     blinky.put(14,19,3,3);
                     pinky.put(14,19,3,3);
@@ -118,25 +115,30 @@ import com.badlogic.gdx.math.Vector2;
             		}
                     if(Gdx.input.isKeyPressed(Keys.UP))
                     {
-                            manager.sendInput(0, Direction.UP);
+                            actorManager.sendInput(0, Direction.UP);
                     }
                    
                     if(Gdx.input.isKeyPressed(Keys.DOWN))
                     {
-                    		manager.sendInput(0, Direction.DOWN);
+                    		actorManager.sendInput(0, Direction.DOWN);
                     }
                    
                     if(Gdx.input.isKeyPressed(Keys.RIGHT))
                     {
-                    		manager.sendInput(0, Direction.RIGHT);
+                    		actorManager.sendInput(0, Direction.RIGHT);
                     }
                    
                     if(Gdx.input.isKeyPressed(Keys.LEFT))
                     {
-                    		manager.sendInput(0, Direction.LEFT);
+                    		actorManager.sendInput(0, Direction.LEFT);
+                    }
+                    
+                    if(Gdx.input.isKeyPressed(Keys.SPACE))
+                    {
+                    		actorManager.sendInput(0, Direction.ATTACK);
                     }
                     timer.tick();
-                    manager.tick();
+                    actorManager.tick();
                     updateScoring();
             }
             void updateScoring()
@@ -164,7 +166,7 @@ import com.badlogic.gdx.math.Vector2;
                     
                     batch.draw(stageSprite, 0,8);
                     
-                    manager.draw(batch);
+                    actorManager.draw(batch);
                     
                     //batch.draw(pacmanSprite, pacman.getScreenX(), pacman.getScreenY());
                     //batch.draw(blinkySprite, blinky.getScreenX(), blinky.getScreenY());
@@ -247,9 +249,9 @@ import com.badlogic.gdx.math.Vector2;
                     	for (int y=0; y<31; y++)
                     	{
                     		if (Stage.get(x,y)==2)
-                    			batch.draw(dotSprite, x*8+3, y*8+11);
+                    			batch.draw(gfxManager.get(Constants.SPRITE_DOT), x*8+3, y*8+11);
                     		if (Stage.get(x,y)==3)
-                    			batch.draw(powerupSprite, x*8, y*8+8);
+                    			batch.draw(gfxManager.get(Constants.SPRITE_POWERUP), x*8, y*8+8);
                     	}
                     }
                     

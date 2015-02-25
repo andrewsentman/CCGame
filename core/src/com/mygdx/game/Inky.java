@@ -6,8 +6,8 @@ public class Inky extends Ghost{
 
 	Blinky blinky;
 
-	Inky(TextureRegion sprite, Pacman pacman, StageTimer timer, Blinky blinky) {
-		super(sprite, pacman,timer);
+	Inky(ActorManager manager, int sprite, Pacman pacman, StageTimer timer, Blinky blinky) {
+		super(manager,sprite, pacman,timer);
 		this.blinky=blinky;
 	}
 	@Override

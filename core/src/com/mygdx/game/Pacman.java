@@ -3,8 +3,8 @@ package com.mygdx.game;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Pacman extends InputActor{
-	Pacman(TextureRegion sprite) {
-		super(sprite);
+	Pacman(ActorManager manager, int sprite) {
+		super(manager,sprite);
 		this.direction=Direction.LEFT;
 	}
 	void cornerX()

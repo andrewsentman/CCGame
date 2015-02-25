@@ -10,12 +10,14 @@ public class Actor {
 	int tileX;
 	int tileY;
 	int direction;
-	TextureRegion sprite;
+	int sprite;
+	ActorManager manager;
 	static final int[] lX= {0,0,0,4,2,2,2,2};
 	static final int[] lY= {3,3,3,4,1,1,1,1};
 
-	public Actor(TextureRegion sprite) {
+	public Actor(ActorManager manager, int sprite) {
 		this.sprite=sprite;
+		this.manager=manager;
 	}
 
 	void put(int tx, int ty, int px, int py) {
