@@ -50,6 +50,7 @@ import com.badlogic.gdx.math.Vector2;
             int u=0;
            
             Vector2 pixelLocation = new Vector2(0, 0);
+			ActorManager manager;
            
             @Override
             public void create () {
@@ -84,16 +85,23 @@ import com.badlogic.gdx.math.Vector2;
                     dotSprite = atlas.findRegion("dot");
                     powerupSprite = atlas.findRegion("powerup"); 
                     
-                    pacman = new Pacman();
+                    manager=new ActorManager();
                     
                     timer = new StageTimer(1);
                     
                     score = new Score();
                     
+                    pacman = new Pacman();
                     blinky = new Blinky(pacman,timer);
                     pinky = new Pinky(pacman,timer);
                     inky = new Inky(pacman,timer,blinky);
                     clyde = new Clyde(pacman,timer);
+                    
+                    manager.addInputActor(pacman, 0);
+                    manager.add(blinky);
+                    manager.add(pinky);
+                    manager.add(inky);
+                    manager.add(clyde);
                    
                     blinky.put(14,19,3,3);
                     pinky.put(14,19,3,3);
@@ -128,11 +136,7 @@ import com.badlogic.gdx.math.Vector2;
                     		pacman.joyLeft();
                     }
                     timer.tick();
-                    pacman.tick();
-                    blinky.tick();
-                    pinky.tick();
-                    inky.tick();
-                    clyde.tick();
+                    manager.tick();
                     updateScoring();
             }
             void updateScoring()
