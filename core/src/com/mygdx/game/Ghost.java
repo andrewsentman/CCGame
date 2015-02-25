@@ -17,7 +17,7 @@ public class Ghost extends Actor {
 	@Override
 	void tickAI()
 	{
-		if (((this.pixelX!=3) || (this.pixelY!=3)) && (!this.inPen))
+		if ((this.pixelX!=3) || (this.pixelY!=3))
 		{
 			//return;
 		}
