@@ -1,8 +1,7 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-public class Ghost extends Actor {
+public class Ghost extends PhysicsActor {
 	int targetX;
 	int targetY;
 	Pacman pacman;

@@ -1,6 +1,5 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Pacman extends InputActor{
 	Pacman(ActorManager manager, int sprite) {

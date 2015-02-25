@@ -7,7 +7,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -243,6 +242,8 @@ import com.badlogic.gdx.math.Vector2;
                     mfont.draw(batch, "Score:"+score.score,0,420);
                     mfont.draw(batch, "Dots:"+score.dots,0,400);
                     mfont.draw(batch, "Power:"+score.powerups,0,380);
+                    
+                    mfont.draw(batch, "Spr:"+actorManager.actors.size(),0,500);
                     
                     for (int x=0; x<28; x++)
                     {

@@ -1,7 +1,5 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Actor {
 
@@ -11,6 +9,7 @@ public class Actor {
 	int tileY;
 	int direction;
 	int sprite;
+	boolean collisions=true;
 	ActorManager manager;
 	static final int[] lX= {0,0,0,4,2,2,2,2};
 	static final int[] lY= {3,3,3,4,1,1,1,1};
@@ -63,26 +62,9 @@ public class Actor {
 			this.pixelX=0;
 			this.tileX+=1;
 		}
-		if (this.tileX<0)
-		{
-			this.tileX=27;
-		}
-		if (this.tileX>27)
-		{
-			this.tileX=0;
-		}
 	}
-	void move(int dir) {
-		if (Stage.get(this.tileX+Direction.oX[dir],this.tileY+Direction.oY[dir])!=1 || 
-									((lX[this.pixelX]==dir) || (lY[this.pixelY]==dir)))
-		{
-			this.pixelX+=Direction.oX[dir];
-			this.pixelY+=Direction.oY[dir];
-			//if (Direction.oX[dir]==0)
-			//	cornerX();
-			//if (Direction.oY[dir]==0)
-			//	cornerY();
-		}
+	void move(int direction)
+	{
 	}
 
 }
