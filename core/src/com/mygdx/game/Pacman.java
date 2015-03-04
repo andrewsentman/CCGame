@@ -2,8 +2,8 @@ package com.mygdx.game;
 
 
 public class Pacman extends InputActor{
-	Pacman(ActorManager manager, int sprite) {
-		super(manager,sprite);
+	Pacman(int sprite) {
+		super(sprite);
 		this.direction=Direction.LEFT;
 	}
 	void cornerX()

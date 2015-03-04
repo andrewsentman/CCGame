@@ -10,13 +10,11 @@ public class Actor {
 	int direction;
 	int sprite;
 	boolean collisions=true;
-	ActorManager manager;
 	static final int[] lX= {0,0,0,4,2,2,2,2};
 	static final int[] lY= {3,3,3,4,1,1,1,1};
 
-	public Actor(ActorManager manager, int sprite) {
+	public Actor(int sprite) {
 		this.sprite=sprite;
-		this.manager=manager;
 	}
 
 	void put(int tx, int ty, int px, int py) {
@@ -62,9 +60,21 @@ public class Actor {
 			this.pixelX=0;
 			this.tileX+=1;
 		}
+		this.checkDelete();
 	}
 	void move(int direction)
 	{
+	}
+	void checkDelete()
+	{
+		if ((this.tileX<-1)||(this.tileY<-1)||(this.tileX>Stage.width)||(this.tileY>Stage.height))
+		{
+			this.kill();
+		}
+	}
+	void kill()
+	{
+		ActorManager.deleteActor(this);
 	}
 
 }

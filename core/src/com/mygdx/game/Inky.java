@@ -1,12 +1,12 @@
 package com.mygdx.game;
 
 
-public class Inky extends Ghost{
+public class Inky extends Enemy{
 
 	Blinky blinky;
 
-	Inky(ActorManager manager, int sprite, Pacman pacman, StageTimer timer, Blinky blinky) {
-		super(manager,sprite, pacman,timer);
+	Inky(int sprite, Pacman pacman, Blinky blinky) {
+		super(sprite, pacman);
 		this.blinky=blinky;
 	}
 	@Override

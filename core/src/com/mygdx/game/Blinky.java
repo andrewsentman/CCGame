@@ -1,10 +1,10 @@
 package com.mygdx.game;
 
 
-public class Blinky extends Ghost {
+public class Blinky extends Enemy {
 
-	Blinky(ActorManager manager, int sprite, Pacman pacman, StageTimer timer) {
-		super(manager,sprite, pacman, timer);
+	Blinky(int sprite, Pacman pacman) {
+		super(sprite, pacman);
 	}
 	@Override
 	void updateTargetScatter()

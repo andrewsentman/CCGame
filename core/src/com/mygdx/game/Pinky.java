@@ -1,10 +1,10 @@
 package com.mygdx.game;
 
 
-public class Pinky extends Ghost {
+public class Pinky extends Enemy {
 
-	Pinky(ActorManager manager, int sprite, Pacman pacman, StageTimer timer) {
-		super(manager,sprite, pacman, timer);
+	Pinky(int sprite, Pacman pacman) {
+		super(sprite, pacman);
 	}
 	@Override
 	void updateTargetScatter()

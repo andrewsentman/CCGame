@@ -1,10 +1,10 @@
 package com.mygdx.game;
 
 
-public class Clyde extends Ghost {
+public class Clyde extends Enemy {
 
-	Clyde(ActorManager manager, int sprite, Pacman pacman, StageTimer timer) {
-		super(manager,sprite, pacman, timer);
+	Clyde(int sprite, Pacman pacman) {
+		super(sprite, pacman);
 	}
 	@Override
 	void updateTargetScatter()
@@ -14,7 +14,7 @@ public class Clyde extends Ghost {
 	@Override
 	void updateTarget()
 	{
-		if (Ghost.distance(this.tileX,this.tileY,this.pacman.tileX,this.pacman.tileY)<8)
+		if (Enemy.distance(this.tileX,this.tileY,this.pacman.tileX,this.pacman.tileY)<8)
 		{
 			this.targetX=0;
 			this.targetY=-1;
