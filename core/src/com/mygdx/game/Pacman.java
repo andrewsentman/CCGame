@@ -18,6 +18,8 @@ public class Pacman extends InputActor{
 	}
 	@Override
 	void move(int dir) {
+		if (MyGdxGame.u%10!=0)
+			return;
 		if (Stage.get(this.tileX+Direction.oX[dir],this.tileY+Direction.oY[dir])!=1 || 
 									((lX[this.pixelX]==dir) || (lY[this.pixelY]==dir)))
 		{

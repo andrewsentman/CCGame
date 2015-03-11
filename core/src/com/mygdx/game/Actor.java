@@ -1,5 +1,7 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 
 public class Actor {
 
@@ -75,6 +77,10 @@ public class Actor {
 	void kill()
 	{
 		ActorManager.deleteActor(this);
+	}
+	void draw(SpriteBatch batch)
+	{
+		batch.draw(GfxManager.get(this.sprite), this.getScreenX(), this.getScreenY());
 	}
 
 }

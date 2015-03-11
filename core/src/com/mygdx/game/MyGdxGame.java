@@ -20,10 +20,11 @@ import com.badlogic.gdx.math.Vector2;
             TextureAtlas atlas;
             AtlasRegion stageSprite;
             Pacman pacman;
-            Blinky blinky;
-            Pinky pinky;
-            Inky inky;
-            Clyde clyde;
+            //Blinky blinky;
+            //Pinky pinky;
+            //Inky inky;
+            //Clyde clyde;
+
             
             StageTimer timer;
             
@@ -39,7 +40,7 @@ import com.badlogic.gdx.math.Vector2;
             float screenWidth = 0;
             float screenHeight = 0;
             
-            int u=0;
+            static int u=0;
            
             Vector2 pixelLocation = new Vector2(0, 0);
            
@@ -82,13 +83,13 @@ import com.badlogic.gdx.math.Vector2;
                     score = new Score();
                     
                     pacman = new Pacman(Constants.SPRITE_PACMAN);
-                    blinky = new Blinky(Constants.SPRITE_BLINKY, pacman);
-                    pinky = new Pinky(Constants.SPRITE_PINKY, pacman);
-                    inky = new Inky(Constants.SPRITE_INKY, pacman,blinky);
-                    clyde = new Clyde(Constants.SPRITE_CLYDE, pacman);
+                    //blinky = new Blinky(Constants.SPRITE_BLINKY, pacman);
+                    //pinky = new Pinky(Constants.SPRITE_PINKY, pacman);
+                    //inky = new Inky(Constants.SPRITE_INKY, pacman,blinky);
+                    //clyde = new Clyde(Constants.SPRITE_CLYDE, pacman);
                     
                     ActorManager.addInputActor(pacman, 0);
-                    ActorManager.add(blinky);
+                    /*ActorManager.add(blinky);
                     ActorManager.add(pinky);
                     ActorManager.add(inky);
                     ActorManager.add(clyde);
@@ -96,7 +97,11 @@ import com.badlogic.gdx.math.Vector2;
                     blinky.put(14,19,3,3);
                     pinky.put(14,19,3,3);
                     inky.put(14,19,3,3);
-                    clyde.put(14,19,3,3);
+                    clyde.put(14,19,3,3);*/
+                    HealthTest ht = new HealthTest(Constants.SPRITE_INKY,pacman);
+                    ActorManager.add(ht);
+                    ht.put(14,7,3,3);
+                    
                     pacman.put(14,7,3,3);
             }
            
@@ -104,7 +109,7 @@ import com.badlogic.gdx.math.Vector2;
             		u+=1;
             		if (u%10>0)
             		{
-            			if (Gdx.input.isKeyPressed(Keys.SPACE)) return;
+            			if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT)) return;
             		}
                     if(Gdx.input.isKeyPressed(Keys.UP))
                     {
@@ -133,9 +138,9 @@ import com.badlogic.gdx.math.Vector2;
                     timer.tick();
                     if (timer.ticks%100==0)
                     {
-                    	Enemy ghost = new Blinky(Constants.SPRITE_BLINKY,(Pacman) ActorManager.inputActors.get(0));
-                    	ghost.put(14, 19, 3, 3);
-                    	ActorManager.add(ghost);
+                    	//Enemy ghost = new Blinky(Constants.SPRITE_BLINKY,(Pacman) ActorManager.inputActors.get(0));
+                    	//ghost.put(14, 19, 3, 3);
+                    	//ActorManager.add(ghost);
                     	
                     }
                     ActorManager.tick();
@@ -185,7 +190,7 @@ import com.badlogic.gdx.math.Vector2;
                     pfont.draw(batch, ""+Stage.get(pacman.tileX, pacman.tileY-1), 420, 500);
                     pfont.draw(batch, ""+Stage.get(pacman.tileX, pacman.tileY+1), 420, 540);
                     
-                    bfont.draw(batch, ""+blinky.tileX, 300, 440);
+                    /*bfont.draw(batch, ""+blinky.tileX, 300, 440);
                     bfont.draw(batch, ""+blinky.tileY, 300, 400);
                     bfont.draw(batch, ""+blinky.pixelX, 340, 440);
                     bfont.draw(batch, ""+blinky.pixelY, 340, 400);
@@ -234,7 +239,7 @@ import com.badlogic.gdx.math.Vector2;
                     cfont.draw(batch, ""+Stage.get(clyde.tileX, clyde.tileY-1), 420, 100);
                     cfont.draw(batch, ""+Stage.get(clyde.tileX, clyde.tileY+1), 420, 140);
                     cfont.draw(batch, "x", clyde.targetX*8, clyde.targetY*8+20);
-                    
+                    */
                     //mfont.draw(batch, ""+timer.mode, 0,580);
                     mfont.draw(batch, ""+timer.ticks/60, 60,580);
                     mfont.draw(batch, ""+timer.ticks%60, 100,580);
@@ -258,12 +263,12 @@ import com.badlogic.gdx.math.Vector2;
                     }
                     
                     batch.end();
-                    ShapeRenderer sr = new ShapeRenderer();
-                    sr.setColor(Color.CYAN);
+                    //ShapeRenderer sr = new ShapeRenderer();
+                    //sr.setColor(Color.CYAN);
 
-                    sr.begin(ShapeType.Line);
-                    sr.line(inky.targetX*8+3,inky.targetY*8+11,blinky.tileX*8+3,blinky.tileY*8+11);
-                    sr.end();
+                    //sr.begin(ShapeType.Line);
+                    //sr.line(inky.targetX*8+3,inky.targetY*8+11,blinky.tileX*8+3,blinky.tileY*8+11);
+                    //sr.end();
                     
             }
     }

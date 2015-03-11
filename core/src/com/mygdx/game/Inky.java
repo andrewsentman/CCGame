@@ -6,7 +6,7 @@ public class Inky extends Enemy{
 	Blinky blinky;
 
 	Inky(int sprite, Pacman pacman, Blinky blinky) {
-		super(sprite, pacman);
+		super(sprite, pacman,1);
 		this.blinky=blinky;
 	}
 	@Override
