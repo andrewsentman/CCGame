@@ -65,18 +65,20 @@ import com.badlogic.gdx.math.Vector2;
                     
                     Stage.resetStage();
                     
-                    atlas = new TextureAtlas(Gdx.files.internal("sprites.pack"));
+                    atlas = new TextureAtlas(Gdx.files.internal("CCGame.pack"));
                    
                     batch = new SpriteBatch();
                     stageSprite = atlas.findRegion("stage");
                     
-                    GfxManager.add(atlas.findRegion("pacmanc"), Constants.SPRITE_PACMAN);
-                    GfxManager.add(atlas.findRegion("blinkyu"), Constants.SPRITE_BLINKY);
-                    GfxManager.add(atlas.findRegion("pinkyu"), Constants.SPRITE_PINKY);
-                    GfxManager.add(atlas.findRegion("inkyu"), Constants.SPRITE_INKY);
-                    GfxManager.add(atlas.findRegion("clydeu"), Constants.SPRITE_CLYDE);
-                    GfxManager.add(atlas.findRegion("dot"), Constants.SPRITE_DOT);
-                    GfxManager.add(atlas.findRegion("powerup"), Constants.SPRITE_POWERUP);
+                    GfxManager.add(atlas.findRegion("player"), Constants.SPRITE_PACMAN);
+                    GfxManager.add(atlas.findRegion("enemy"), Constants.SPRITE_BLINKY);
+                    //GfxManager.add(atlas.findRegion("pinkyu"), Constants.SPRITE_PINKY);
+                    //GfxManager.add(atlas.findRegion("inkyu"), Constants.SPRITE_INKY);
+                    //GfxManager.add(atlas.findRegion("clydeu"), Constants.SPRITE_CLYDE);
+                    GfxManager.add(atlas.findRegion("pixel_red"), Constants.SPRITE_DOT);
+                    GfxManager.add(atlas.findRegion("pixel_green"), Constants.SPRITE_POWERUP);
+                    GfxManager.add(atlas.findRegion("stage_full"), Constants.STAGE_WALL);
+                    GfxManager.add(atlas.findRegion("stage_empty"), Constants.STAGE_GRASS);
                     
                     timer = new StageTimer(1);
                     
@@ -100,9 +102,9 @@ import com.badlogic.gdx.math.Vector2;
                     clyde.put(14,19,3,3);*/
                     HealthTest ht = new HealthTest(Constants.SPRITE_INKY,pacman);
                     ActorManager.add(ht);
-                    ht.put(14,7,3,3);
+                    ht.put(1,1,3,3);
                     
-                    pacman.put(14,7,3,3);
+                    pacman.put(1,1,3,3);
             }
            
             public void update () {
@@ -130,7 +132,10 @@ import com.badlogic.gdx.math.Vector2;
                     {
                     		ActorManager.sendInput(0, Direction.LEFT);
                     }
-                    
+                    if (Gdx.input.isKeyPressed(Keys.B))
+                    {
+                    		ActorManager.sendInput(0, Direction.STOP);
+                    }
                     if(Gdx.input.isKeyPressed(Keys.SPACE))
                     {
                     		ActorManager.sendInput(0, Direction.ATTACK);
@@ -159,6 +164,22 @@ import com.badlogic.gdx.math.Vector2;
             		score.eatPowerup();
             	}
             }
+            
+            public void drawStage(){
+            	for (int x=0; x<Stage.width; x++)
+                {
+                	for (int y=0; y<Stage.height; y++)
+                	{
+                		if (Stage.get(x, y)==0)
+                			batch.draw(GfxManager.get(Constants.STAGE_GRASS), x*8, y*8);
+                		if (Stage.get(x, y)==1)
+                			batch.draw(GfxManager.get(Constants.STAGE_WALL), x*8, y*8);
+                			
+                		//if (Stage.get(x,y)==3)
+                			//batch.draw(GfxManager.get(Constants.SPRITE_POWERUP), x*8, y*8+8);
+                	}
+                }
+            }
            
             @Override
             public void render () {
@@ -168,8 +189,8 @@ import com.badlogic.gdx.math.Vector2;
                     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
                    
                     batch.begin();
-                    
-                    batch.draw(stageSprite, 0,8);
+                    drawStage();
+                    //batch.draw(stageSprite, 0,8);
                     
                     ActorManager.draw(batch);
                     
@@ -250,17 +271,6 @@ import com.badlogic.gdx.math.Vector2;
                     mfont.draw(batch, "Power:"+score.powerups,0,380);
                     
                     mfont.draw(batch, "Spr:"+ActorManager.actors.size(),0,500);
-                    
-                    for (int x=0; x<28; x++)
-                    {
-                    	for (int y=0; y<31; y++)
-                    	{
-                    		if (Stage.get(x,y)==2)
-                    			batch.draw(GfxManager.get(Constants.SPRITE_DOT), x*8+3, y*8+11);
-                    		if (Stage.get(x,y)==3)
-                    			batch.draw(GfxManager.get(Constants.SPRITE_POWERUP), x*8, y*8+8);
-                    	}
-                    }
                     
                     batch.end();
                     //ShapeRenderer sr = new ShapeRenderer();

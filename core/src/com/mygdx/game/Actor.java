@@ -27,11 +27,11 @@ public class Actor {
 	}
 
 	int getScreenX() {
-		return this.tileX*8+this.pixelX-7;
+		return this.tileX*8+this.pixelX-3;
 	}
 
 	int getScreenY() {
-		return this.tileY*8+this.pixelY;
+		return this.tileY*8+this.pixelY-3;
 	}
 	
 	void tickAI()

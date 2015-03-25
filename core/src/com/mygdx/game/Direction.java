@@ -6,7 +6,9 @@ public class Direction {
 	static final int LEFT=2;
 	static final int UP=3;
 	static final int NONE=4;
-	static final int ATTACK=5;
+	static final int STOP=5;
+	static final int ATTACK=6;
+	
 	static final String[] names = {"R","D","L","U","N"};
 	static final int[] oX = {1,0,-1,0,0};
 	static final int[] oY = {0,-1,0,1,0};
