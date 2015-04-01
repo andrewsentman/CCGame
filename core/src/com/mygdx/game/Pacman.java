@@ -6,6 +6,26 @@ public class Pacman extends InputActor{
 		super(sprite);
 		this.direction=Direction.LEFT;
 	}
+	@Override
+	void recieveInput(int dir)
+	{
+		super.recieveInput(dir);
+		switch (dir)
+		{
+		case Direction.UP:
+			this.sprite=Constants.SPRITE_PACMAN_U;
+			break;
+		case Direction.DOWN:
+			this.sprite=Constants.SPRITE_PACMAN_D;
+			break;
+		case Direction.LEFT:
+			this.sprite=Constants.SPRITE_PACMAN_L;
+			break;
+		case Direction.RIGHT:
+			this.sprite=Constants.SPRITE_PACMAN_R;
+			break;
+		}
+	}
 	void cornerX()
 	{
 		if (this.pixelX<3) this.pixelX++;

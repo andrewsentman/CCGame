@@ -70,7 +70,10 @@ import com.badlogic.gdx.math.Vector2;
                     batch = new SpriteBatch();
                     stageSprite = atlas.findRegion("stage");
                     
-                    GfxManager.add(atlas.findRegion("player"), Constants.SPRITE_PACMAN);
+                    GfxManager.add(atlas.findRegion("playeru"), Constants.SPRITE_PACMAN_U);
+                    GfxManager.add(atlas.findRegion("playerd"), Constants.SPRITE_PACMAN_D);
+                    GfxManager.add(atlas.findRegion("playerl"), Constants.SPRITE_PACMAN_L);
+                    GfxManager.add(atlas.findRegion("playerr"), Constants.SPRITE_PACMAN_R);
                     GfxManager.add(atlas.findRegion("enemy"), Constants.SPRITE_BLINKY);
                     //GfxManager.add(atlas.findRegion("pinkyu"), Constants.SPRITE_PINKY);
                     //GfxManager.add(atlas.findRegion("inkyu"), Constants.SPRITE_INKY);
@@ -79,7 +82,9 @@ import com.badlogic.gdx.math.Vector2;
                     GfxManager.add(atlas.findRegion("pixel_green"), Constants.SPRITE_POWERUP);
                     GfxManager.add(atlas.findRegion("stage_full"), Constants.STAGE_WALL);
                     GfxManager.add(atlas.findRegion("stage_empty"), Constants.STAGE_GRASS);
-                    
+                    GfxManager.add(atlas.findRegion("bullet"), Constants.SPRITE_BULLET);
+                    Bullet bullet = new Bullet(Constants.SPRITE_BULLET);
+                    ActorManager.add(bullet);
                     timer = new StageTimer(1);
                     
                     score = new Score();
@@ -113,16 +118,15 @@ import com.badlogic.gdx.math.Vector2;
             		{
             			if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT)) return;
             		}
+            		ActorManager.sendInput(0, Direction.STOP);
                     if(Gdx.input.isKeyPressed(Keys.UP))
                     {
                             ActorManager.sendInput(0, Direction.UP);
                     }
-                   
                     if(Gdx.input.isKeyPressed(Keys.DOWN))
                     {
                     		ActorManager.sendInput(0, Direction.DOWN);
                     }
-                   
                     if(Gdx.input.isKeyPressed(Keys.RIGHT))
                     {
                     		ActorManager.sendInput(0, Direction.RIGHT);
@@ -131,10 +135,6 @@ import com.badlogic.gdx.math.Vector2;
                     if(Gdx.input.isKeyPressed(Keys.LEFT))
                     {
                     		ActorManager.sendInput(0, Direction.LEFT);
-                    }
-                    if (Gdx.input.isKeyPressed(Keys.B))
-                    {
-                    		ActorManager.sendInput(0, Direction.STOP);
                     }
                     if(Gdx.input.isKeyPressed(Keys.SPACE))
                     {
@@ -200,6 +200,8 @@ import com.badlogic.gdx.math.Vector2;
                     //batch.draw(inkySprite, inky.getScreenX(), inky.getScreenY());
                     //batch.draw(clydeSprite, clyde.getScreenX(), clyde.getScreenY());
                     
+                    pfont.draw(batch, ""+Direction.oX[pacman.direction], 300, 560);
+                    pfont.draw(batch, ""+Direction.oY[pacman.direction], 400, 560);
                     pfont.draw(batch, ""+pacman.tileX, 300, 540);
                     pfont.draw(batch, ""+pacman.tileY, 300, 500);
                     pfont.draw(batch, ""+pacman.pixelX, 340, 540);
