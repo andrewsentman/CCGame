@@ -20,6 +20,7 @@ public class Stage {
 				int[] destwarp=Map.warps(warp[2])[warp[3]];
 				System.out.println(Arrays.toString(destwarp));
 				loadmap(warp[2],destwarp[0],destwarp[1]);
+				return;
 			}
 		}
 	}
@@ -42,8 +43,6 @@ public class Stage {
 		ActorManager.inputActors.get(0).put(x, y, 3, 3);
 		for (int[] enemy : Map.enemies(map))
 		{
-			System.out.print('E');
-			System.out.println(Arrays.toString(enemy));
 			Actor ac = new HealthTest(Constants.SPRITE_INKY);
 			ac.put(enemy[0], enemy[1], 3, 3);
 			ActorManager.add(ac);

@@ -203,6 +203,8 @@ import com.badlogic.gdx.math.Vector2;
                     //batch.draw(inkySprite, inky.getScreenX(), inky.getScreenY());
                     //batch.draw(clydeSprite, clyde.getScreenX(), clyde.getScreenY());
                     
+                    pfont.draw(batch, ""+Stage.curmap, 350, 600);
+                    
                     pfont.draw(batch, ""+Direction.oX[pacman.direction], 300, 560);
                     pfont.draw(batch, ""+Direction.oY[pacman.direction], 400, 560);
                     pfont.draw(batch, ""+pacman.tileX, 300, 540);
