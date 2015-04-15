@@ -2,7 +2,9 @@
 
     package com.mygdx.game;
      
-    import com.badlogic.gdx.ApplicationAdapter;
+    import java.util.Arrays;
+
+import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
@@ -19,11 +21,6 @@ import com.badlogic.gdx.math.Vector2;
             SpriteBatch batch;
             TextureAtlas atlas;
             AtlasRegion stageSprite;
-            Pacman pacman;
-            //Blinky blinky;
-            //Pinky pinky;
-            //Inky inky;
-            //Clyde clyde;
 
             
             StageTimer timer;
@@ -63,7 +60,6 @@ import com.badlogic.gdx.math.Vector2;
             		screenWidth = Gdx.graphics.getWidth();
                     screenHeight = Gdx.graphics.getHeight();
                     
-                    Stage.resetStage();
                     
                     atlas = new TextureAtlas(Gdx.files.internal("CCGame.pack"));
                    
@@ -82,20 +78,20 @@ import com.badlogic.gdx.math.Vector2;
                     GfxManager.add(atlas.findRegion("pixel_green"), Constants.SPRITE_POWERUP);
                     GfxManager.add(atlas.findRegion("stage_full"), Constants.STAGE_WALL);
                     GfxManager.add(atlas.findRegion("stage_empty"), Constants.STAGE_GRASS);
+                    GfxManager.add(atlas.findRegion("stage_warp"), Constants.STAGE_WARP);
                     GfxManager.add(atlas.findRegion("bullet"), Constants.SPRITE_BULLET);
-                    Bullet bullet = new Bullet(Constants.SPRITE_BULLET);
-                    ActorManager.add(bullet);
+                    
+                    Stage.resetStage();
+                    
                     timer = new StageTimer(1);
                     
                     score = new Score();
                     
-                    pacman = new Pacman(Constants.SPRITE_PACMAN);
                     //blinky = new Blinky(Constants.SPRITE_BLINKY, pacman);
                     //pinky = new Pinky(Constants.SPRITE_PINKY, pacman);
                     //inky = new Inky(Constants.SPRITE_INKY, pacman,blinky);
                     //clyde = new Clyde(Constants.SPRITE_CLYDE, pacman);
                     
-                    ActorManager.addInputActor(pacman, 0);
                     /*ActorManager.add(blinky);
                     ActorManager.add(pinky);
                     ActorManager.add(inky);
@@ -105,11 +101,11 @@ import com.badlogic.gdx.math.Vector2;
                     pinky.put(14,19,3,3);
                     inky.put(14,19,3,3);
                     clyde.put(14,19,3,3);*/
-                    HealthTest ht = new HealthTest(Constants.SPRITE_INKY,pacman);
-                    ActorManager.add(ht);
-                    ht.put(1,1,3,3);
+                    //HealthTest ht = new HealthTest(Constants.SPRITE_INKY,pacman);
+                    //ActorManager.add(ht);
+                    //ht.put(1,1,3,3);
                     
-                    pacman.put(1,1,3,3);
+                    //pacman.put(1,1,3,3);
             }
            
             public void update () {
@@ -136,7 +132,7 @@ import com.badlogic.gdx.math.Vector2;
                     {
                     		ActorManager.sendInput(0, Direction.LEFT);
                     }
-                    if(Gdx.input.isKeyPressed(Keys.SPACE))
+                    if(Gdx.input.isKeyJustPressed(Keys.SPACE))
                     {
                     		ActorManager.sendInput(0, Direction.ATTACK);
                     }
@@ -153,6 +149,7 @@ import com.badlogic.gdx.math.Vector2;
             }
             void updateScoring()
             {
+            	Pacman pacman=(Pacman) ActorManager.inputActors.get(0);
             	if (Stage.get(pacman.tileX, pacman.tileY)==2)
             	{
             		Stage.set(pacman.tileX, pacman.tileY,0);
@@ -174,7 +171,13 @@ import com.badlogic.gdx.math.Vector2;
                 			batch.draw(GfxManager.get(Constants.STAGE_GRASS), x*8, y*8);
                 		if (Stage.get(x, y)==1)
                 			batch.draw(GfxManager.get(Constants.STAGE_WALL), x*8, y*8);
-                			
+                		for (int[] warp : Map.warps(Stage.curmap))
+                		{
+                			if ((warp[0]==x)&&(warp[1]==y))
+                			{
+                				batch.draw(GfxManager.get(Constants.STAGE_WARP), x*8, y*8);
+                			}
+                		}	
                 		//if (Stage.get(x,y)==3)
                 			//batch.draw(GfxManager.get(Constants.SPRITE_POWERUP), x*8, y*8+8);
                 	}
@@ -184,7 +187,7 @@ import com.badlogic.gdx.math.Vector2;
             @Override
             public void render () {
                     update();
-                   
+                    Pacman pacman=(Pacman) ActorManager.inputActors.get(0);
                     Gdx.gl.glClearColor(0, 0, 0, 1);
                     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
                    

@@ -37,6 +37,11 @@ public class Pacman extends InputActor{
 		if (this.pixelY>3) this.pixelY--;
 	}
 	@Override
+	void enterTile()
+	{
+		Stage.evalWarps(this.tileX, this.tileY);
+	}
+	@Override
 	void move(int dir) {
 		if (this.halted)
 			return;

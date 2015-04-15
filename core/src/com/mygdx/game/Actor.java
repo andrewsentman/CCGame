@@ -38,7 +38,10 @@ public class Actor {
 	{
 		
 	}
-
+	void enterTile()
+	{
+		
+	}
 	void tick() {
 		this.tickAI();
 		this.move(this.direction);
@@ -46,21 +49,25 @@ public class Actor {
 		{
 			this.pixelY=7;
 			this.tileY-=1;
+			this.enterTile();
 		}
 		if (this.pixelX<0)
 		{
 			this.pixelX=7;
 			this.tileX-=1;
+			this.enterTile();
 		}
 		if (this.pixelY>7)
 		{
 			this.pixelY=0;
 			this.tileY+=1;
+			this.enterTile();
 		}
 		if (this.pixelX>7)
 		{
 			this.pixelX=0;
 			this.tileX+=1;
+			this.enterTile();
 		}
 		this.checkDelete();
 	}

@@ -3,8 +3,8 @@ package com.mygdx.game;
 
 public class Clyde extends Enemy {
 
-	Clyde(int sprite, Pacman pacman) {
-		super(sprite, pacman,1);
+	Clyde(int sprite) {
+		super(sprite,1);
 	}
 	@Override
 	void updateTargetScatter()
