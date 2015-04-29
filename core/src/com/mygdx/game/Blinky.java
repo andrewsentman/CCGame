@@ -3,13 +3,8 @@ package com.mygdx.game;
 
 public class Blinky extends Enemy {
 
-	Blinky(int sprite) {
-		super(sprite, 1);
-	}
-	@Override
-	void updateTargetScatter()
-	{	this.targetX=25;
-		this.targetY=35;
+	Blinky(int sprite, int health, float tpm) {
+		super(sprite, health, tpm);
 	}
 	@Override
 	void updateTarget()

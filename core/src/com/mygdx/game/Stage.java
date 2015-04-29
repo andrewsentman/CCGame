@@ -26,12 +26,8 @@ public class Stage {
 	}
 	private static void respawn(int map)
 	{
-		if (Map.charx(map)==0)
-		{
-			respawn(map-1);
-			return;
-		}
-		loadmap(map,Map.charx(map),Map.chary(map));
+		int tmap = Map.respawn(map);
+		loadmap(tmap,Map.charx(tmap),Map.chary(tmap));
 	}
 	private static void loadmap(int map,int x, int y) {
 		Stage.curmap=map;
@@ -43,7 +39,7 @@ public class Stage {
 		ActorManager.inputActors.get(0).put(x, y, 3, 3);
 		for (int[] enemy : Map.enemies(map))
 		{
-			Actor ac = new HealthTest(Constants.SPRITE_INKY);
+			Enemy ac = EnemyManager.getEnemy(enemy[2]);
 			ac.put(enemy[0], enemy[1], 3, 3);
 			ActorManager.add(ac);
 		}

@@ -5,14 +5,9 @@ public class Inky extends Enemy{
 
 	Blinky blinky;
 
-	Inky(int sprite, Blinky blinky) {
-		super(sprite,1);
+	Inky(int sprite, int health, float tpm, Blinky blinky) {
+		super(sprite, health, tpm);
 		this.blinky=blinky;
-	}
-	@Override
-	void updateTargetScatter()
-	{	this.targetX=27;
-		this.targetY=-1;
 	}
 	@Override
 	void updateTarget()

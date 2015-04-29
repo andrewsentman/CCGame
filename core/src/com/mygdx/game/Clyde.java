@@ -3,13 +3,8 @@ package com.mygdx.game;
 
 public class Clyde extends Enemy {
 
-	Clyde(int sprite) {
-		super(sprite,1);
-	}
-	@Override
-	void updateTargetScatter()
-	{	this.targetX=0;
-		this.targetY=-1;
+	Clyde(int sprite, int health, float tpm) {
+		super(sprite, health, tpm);
 	}
 	@Override
 	void updateTarget()

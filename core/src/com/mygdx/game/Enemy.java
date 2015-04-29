@@ -14,13 +14,29 @@ public class Enemy extends PhysicsActor {
 	static int activeCounter=0;
 	int health;
 	int maxHealth;
-	Enemy(int sprite, int health)
+	float tpm=2;
+	float ticks;
+	Enemy(int sprite, int health, float tpm)
 	{
 		super(sprite);
 		this.direction=Direction.RIGHT;
 		this.pacman=(Pacman) ActorManager.inputActors.get(0);
 		this.maxHealth=health;
 		this.health=this.maxHealth;
+		this.tpm=tpm;
+		this.ticks=0;
+	}
+	@Override
+	void tick()
+	{
+		if (this.tpm==0)
+			return;
+		this.ticks+=1;
+		while (this.ticks>=this.tpm)
+		{
+			this.ticks-=this.tpm;
+			super.tick();
+		}
 	}
 	@Override
 	void tickAI()
@@ -39,9 +55,6 @@ public class Enemy extends PhysicsActor {
 		{
 			this.kill();
 		}
-	}
-	void updateTargetScatter() 
-	{
 	}
 	void updateTarget()
 	{

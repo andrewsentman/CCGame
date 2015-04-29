@@ -3,13 +3,8 @@ package com.mygdx.game;
 
 public class Pinky extends Enemy {
 
-	Pinky(int sprite) {
-		super(sprite,1);
-	}
-	@Override
-	void updateTargetScatter()
-	{	this.targetX=2;
-		this.targetY=35;
+	Pinky(int sprite, int health, float tpm) {
+		super(sprite, health, tpm);
 	}
 	@Override
 	void updateTarget()
