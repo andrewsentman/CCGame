@@ -16,4 +16,6 @@ public class Constants {
 	static final int SPRITE_PACMAN_R = 10;
 	static final int SPRITE_PACMAN =10;
 	static final int STAGE_WARP = 11;
+	static final int ITEM_BORDER = 12;
+	static final int[] ITEM_SPRITES = {1,11,4,5};
 }

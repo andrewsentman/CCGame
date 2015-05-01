@@ -23,7 +23,6 @@ import com.badlogic.gdx.math.Vector2;
             AtlasRegion stageSprite;
 
             
-            StageTimer timer;
             
             BitmapFont pfont;
             BitmapFont bfont;
@@ -80,10 +79,9 @@ import com.badlogic.gdx.math.Vector2;
                     GfxManager.add(atlas.findRegion("stage_empty"), Constants.STAGE_GRASS);
                     GfxManager.add(atlas.findRegion("stage_warp"), Constants.STAGE_WARP);
                     GfxManager.add(atlas.findRegion("bullet"), Constants.SPRITE_BULLET);
+                    GfxManager.add(atlas.findRegion("itemborder"), Constants.ITEM_BORDER);
                     
                     Stage.resetStage();
-                    
-                    timer = new StageTimer(1);
                     
                     score = new Score();
                     
@@ -136,8 +134,8 @@ import com.badlogic.gdx.math.Vector2;
                     {
                     		ActorManager.sendInput(0, Direction.ATTACK);
                     }
-                    timer.tick();
-                    if (timer.ticks%100==0)
+                    StageTimer.tick();
+                    if (StageTimer.ticks%100==0)
                     {
                     	//Enemy ghost = new Blinky(Constants.SPRITE_BLINKY,(Pacman) ActorManager.inputActors.get(0));
                     	//ghost.put(14, 19, 3, 3);
@@ -196,6 +194,7 @@ import com.badlogic.gdx.math.Vector2;
                     //batch.draw(stageSprite, 0,8);
                     
                     ActorManager.draw(batch);
+                    InventoryManager.draw(batch);
                     
                     //batch.draw(pacmanSprite, pacman.getScreenX(), pacman.getScreenY());
                     //batch.draw(blinkySprite, blinky.getScreenX(), blinky.getScreenY());
@@ -269,8 +268,8 @@ import com.badlogic.gdx.math.Vector2;
                     cfont.draw(batch, "x", clyde.targetX*8, clyde.targetY*8+20);
                     */
                     //mfont.draw(batch, ""+timer.mode, 0,580);
-                    mfont.draw(batch, ""+timer.ticks/60, 60,580);
-                    mfont.draw(batch, ""+timer.ticks%60, 100,580);
+                    mfont.draw(batch, ""+StageTimer.ticks/60, 60,580);
+                    mfont.draw(batch, ""+StageTimer.ticks%60, 100,580);
                     
 
                     mfont.draw(batch, "Score:"+score.score,0,420);

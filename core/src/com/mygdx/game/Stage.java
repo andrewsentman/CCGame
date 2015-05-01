@@ -24,8 +24,9 @@ public class Stage {
 			}
 		}
 	}
-	private static void respawn(int map)
+	static void respawn(int map)
 	{
+		StageTimer.ticks=0;
 		int tmap = Map.respawn(map);
 		loadmap(tmap,Map.charx(tmap),Map.chary(tmap));
 	}
@@ -35,7 +36,7 @@ public class Stage {
 		Stage.height=Map.height(map);
 		Stage.blocks=Map.blocks(map);
 		ActorManager.clear();
-		ActorManager.addInputActor(new Pacman(Constants.SPRITE_PACMAN), 0);
+		ActorManager.addInputActor(new Pacman(Constants.SPRITE_PACMAN,20), 0);
 		ActorManager.inputActors.get(0).put(x, y, 3, 3);
 		for (int[] enemy : Map.enemies(map))
 		{

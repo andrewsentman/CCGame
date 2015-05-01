@@ -1,13 +1,9 @@
 package com.mygdx.game;
 
 public class StageTimer {
-	int ticks;
-	StageTimer(int level)
+	static int ticks=0;
+	static void tick()
 	{
-		this.ticks=0;
-	}
-	void tick()
-	{
-		this.ticks++;
+		ticks++;
 	}
 }

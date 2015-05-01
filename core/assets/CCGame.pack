@@ -3,86 +3,93 @@ CCGame.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+itemborder
+  rotate: false
+  xy: 1, 14
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
 bullet
   rotate: false
-  xy: 1, 7
+  xy: 1, 4
   size: 8, 8
   orig: 8, 8
   offset: 0, 0
   index: -1
 playerd
   rotate: false
-  xy: 11, 7
+  xy: 19, 22
   size: 8, 8
   orig: 8, 8
   offset: 0, 0
   index: -1
 playerl
   rotate: false
-  xy: 21, 7
+  xy: 29, 22
   size: 8, 8
   orig: 8, 8
   offset: 0, 0
   index: -1
 player
   rotate: false
-  xy: 31, 7
+  xy: 39, 22
   size: 8, 8
   orig: 8, 8
   offset: 0, 0
   index: -1
 playeru
   rotate: false
-  xy: 31, 7
+  xy: 39, 22
   size: 8, 8
   orig: 8, 8
   offset: 0, 0
   index: -1
 enemy
   rotate: false
-  xy: 41, 7
+  xy: 49, 22
   size: 8, 8
   orig: 8, 8
   offset: 0, 0
   index: -1
 stage_empty
   rotate: false
-  xy: 51, 7
+  xy: 11, 4
   size: 8, 8
   orig: 8, 8
   offset: 0, 0
   index: -1
 playerr
   rotate: false
-  xy: 61, 7
+  xy: 21, 12
   size: 8, 8
   orig: 8, 8
   offset: 0, 0
   index: -1
 stage_warp
   rotate: false
-  xy: 71, 7
+  xy: 31, 12
   size: 8, 8
   orig: 8, 8
   offset: 0, 0
   index: -1
 stage_full
   rotate: false
-  xy: 81, 7
+  xy: 41, 12
   size: 8, 8
   orig: 8, 8
   offset: 0, 0
   index: -1
 pixel_green
   rotate: false
-  xy: 1, 4
+  xy: 1, 1
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
   index: -1
 pixel_red
   rotate: false
-  xy: 1, 1
+  xy: 59, 29
   size: 1, 1
   orig: 1, 1
   offset: 0, 0

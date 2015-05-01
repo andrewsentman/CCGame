@@ -29,6 +29,13 @@ public class Enemy extends PhysicsActor {
 	@Override
 	void tick()
 	{
+		if ((ActorManager.inputActors.get(0).tileX==this.tileX)&&(ActorManager.inputActors.get(0).tileY==this.tileY))
+		{
+			if (StageTimer.ticks%6==0)
+			{
+				((Pacman)ActorManager.inputActors.get(0)).damage(1);
+			}
+		}
 		if (this.tpm==0)
 			return;
 		this.ticks+=1;
@@ -89,6 +96,8 @@ public class Enemy extends PhysicsActor {
 			this.direction=Direction.LEFT;
 		if (du==minval)
 			this.direction=Direction.UP;
+		if (this.tileX==this.targetX && this.tileY==this.targetY)
+			this.direction=Direction.NONE;
 	}
 	static double distance(int x1, int y1, int x2, int y2)
 	{

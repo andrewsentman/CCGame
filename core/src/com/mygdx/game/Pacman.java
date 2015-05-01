@@ -1,10 +1,16 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 
 public class Pacman extends InputActor{
-	Pacman(int sprite) {
+	int health;
+	int maxHealth;
+	Pacman(int sprite, int health) {
 		super(sprite);
 		this.direction=Direction.LEFT;
+		this.health=health;
+		this.maxHealth=this.health;
 	}
 	@Override
 	void recieveInput(int dir)
@@ -54,6 +60,25 @@ public class Pacman extends InputActor{
 				cornerX();
 			if (Direction.oY[dir]==0)
 				cornerY();
+		}
+	}
+	@Override
+	void draw(SpriteBatch batch)
+	{
+		super.draw(batch);
+		if (this.health!=-1)
+		{
+			batch.draw(GfxManager.get(Constants.SPRITE_DOT),4,Stage.height*8+24,Stage.width*8-8,4);
+			int barwidth=(this.health*(Stage.width*8-8))/this.maxHealth;
+			batch.draw(GfxManager.get(Constants.SPRITE_POWERUP),4,Stage.height*8+24,barwidth,4);
+		}
+	}
+	void damage(int amt)
+	{
+		this.health-=amt;
+		if (this.health<=0)
+		{
+			Stage.respawn(Stage.curmap);
 		}
 	}
 }
