@@ -44,6 +44,12 @@ public class Stage {
 			ac.put(enemy[0], enemy[1], 3, 3);
 			ActorManager.add(ac);
 		}
+		for (int[] item : Map.items(map))
+		{
+			Item ac = new Item(item[2]);
+			ac.put(item[0], item[1], 3, 3);
+			ActorManager.add(ac);
+		}
 	}
 	static int get(int x, int y) {
 		int idx=x+y*Stage.width;

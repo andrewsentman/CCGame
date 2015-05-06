@@ -75,6 +75,8 @@ public class Pacman extends InputActor{
 	}
 	void damage(int amt)
 	{
+		if (InventoryManager.currentItem()==1)
+			return;
 		this.health-=amt;
 		if (this.health<=0)
 		{

@@ -107,6 +107,14 @@ import com.badlogic.gdx.math.Vector2;
             }
            
             public void update () {
+	            	if(Gdx.input.isKeyJustPressed(Keys.PAGE_UP))
+	                {
+	                        InventoryManager.prevItem();
+	                }
+	            	if(Gdx.input.isKeyJustPressed(Keys.PAGE_DOWN))
+                    {
+                            InventoryManager.nextItem();
+                    }
             		u+=1;
             		if (u%10>0)
             		{
