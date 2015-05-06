@@ -64,9 +64,20 @@ public class InputActor extends PhysicsActor {
 	}
 	void attack()
 	{
+		/*
 		Bullet bullet = new Bullet(Constants.SPRITE_BULLET);
 		bullet.put(this.tileX, this.tileY, this.pixelX, this.pixelY);
 		bullet.direction=this.direction;
 		ActorManager.add(bullet);
+		 */
+		for (float i=0; i<2*Math.PI; i+=Math.PI/16)
+		{
+			VectorBullet bullet = new VectorBullet(Constants.SPRITE_BULLET);
+			bullet.put(this.tileX, this.tileY, this.pixelX, this.pixelY);
+			bullet.life=16;
+			bullet.dx=Math.sin(i);
+			bullet.dy=Math.cos(i);
+			ActorManager.add(bullet);
+		}
 	}
 }

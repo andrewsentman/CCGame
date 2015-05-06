@@ -2,6 +2,8 @@ package com.mygdx.game;
 
 public class Bullet extends Actor {
 
+	int life=-1;
+	
 	public Bullet(int sprite) {
 		super(sprite);
 		this.collisions=false;
@@ -20,6 +22,14 @@ public class Bullet extends Actor {
 					this.kill();
 					break;
 				}
+			}
+		}
+		if (this.life>0)
+		{
+			this.life--;
+			if (this.life==0)
+			{
+				this.kill();
 			}
 		}
 	}
