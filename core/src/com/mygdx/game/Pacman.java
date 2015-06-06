@@ -34,13 +34,13 @@ public class Pacman extends InputActor{
 	}
 	void cornerX()
 	{
-		if (this.pixelX<3) this.pixelX++;
-		if (this.pixelX>3) this.pixelX--;
+		if (this.pixelX<((Constants.TILE_SIZE/2)-1)) this.pixelX++;
+		if (this.pixelX>((Constants.TILE_SIZE/2)-1)) this.pixelX--;
 	}
 	void cornerY()
 	{
-		if (this.pixelY<3) this.pixelY++;
-		if (this.pixelY>3) this.pixelY--;
+		if (this.pixelY<((Constants.TILE_SIZE/2)-1)) this.pixelY++;
+		if (this.pixelY>((Constants.TILE_SIZE/2)-1)) this.pixelY--;
 	}
 	@Override
 	void enterTile()
@@ -52,7 +52,7 @@ public class Pacman extends InputActor{
 		if (this.halted)
 			return;
 		if (Stage.get(this.tileX+Direction.oX[dir],this.tileY+Direction.oY[dir])!=1 || 
-									((lX[this.pixelX]==dir) || (lY[this.pixelY]==dir)))
+									((lX.get(this.pixelX)==dir) || (lY.get(this.pixelY)==dir)))
 		{
 			this.pixelX+=Direction.oX[dir];
 			this.pixelY+=Direction.oY[dir];
@@ -68,9 +68,9 @@ public class Pacman extends InputActor{
 		super.draw(batch);
 		if (this.health!=-1)
 		{
-			batch.draw(GfxManager.get(Constants.SPRITE_DOT),4,Stage.height*8+24,Stage.width*8-8,4);
-			int barwidth=(this.health*(Stage.width*8-8))/this.maxHealth;
-			batch.draw(GfxManager.get(Constants.SPRITE_POWERUP),4,Stage.height*8+24,barwidth,4);
+			batch.draw(GfxManager.get(Constants.SPRITE_DOT),4,Stage.height*Constants.TILE_SIZE+4,Stage.width*Constants.TILE_SIZE-8,4);
+			int barwidth=(this.health*(Stage.width*Constants.TILE_SIZE-8))/this.maxHealth;
+			batch.draw(GfxManager.get(Constants.SPRITE_POWERUP),4,Stage.height*Constants.TILE_SIZE+4,barwidth,4);
 		}
 	}
 	void damage(int amt)

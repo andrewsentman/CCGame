@@ -48,7 +48,7 @@ public class Enemy extends PhysicsActor {
 	@Override
 	void tickAI()
 	{
-		if ((this.pixelX!=3) || (this.pixelY!=3))
+		if ((this.pixelX!=((Constants.TILE_SIZE/2)-1)) || (this.pixelY!=((Constants.TILE_SIZE/2)-1)))
 		{
 			return;
 		}

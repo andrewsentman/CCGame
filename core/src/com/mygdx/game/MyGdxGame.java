@@ -55,7 +55,7 @@ import com.badlogic.gdx.math.Vector2;
                 	mfont = new BitmapFont();
                 	mfont.setColor(Color.WHITE);
             	
-                	Gdx.graphics.setDisplayMode(500, 600, false);
+                	Gdx.graphics.setDisplayMode(600, 600, false);
             		screenWidth = Gdx.graphics.getWidth();
                     screenHeight = Gdx.graphics.getHeight();
                     
@@ -174,14 +174,14 @@ import com.badlogic.gdx.math.Vector2;
                 	for (int y=0; y<Stage.height; y++)
                 	{
                 		if (Stage.get(x, y)==0)
-                			batch.draw(GfxManager.get(Constants.STAGE_GRASS), x*8, y*8);
+                			batch.draw(GfxManager.get(Constants.STAGE_GRASS), x*Constants.TILE_SIZE, y*Constants.TILE_SIZE);
                 		if (Stage.get(x, y)==1)
-                			batch.draw(GfxManager.get(Constants.STAGE_WALL), x*8, y*8);
+                			batch.draw(GfxManager.get(Constants.STAGE_WALL), x*Constants.TILE_SIZE, y*Constants.TILE_SIZE);
                 		for (int[] warp : Map.warps(Stage.curmap))
                 		{
                 			if ((warp[0]==x)&&(warp[1]==y))
                 			{
-                				batch.draw(GfxManager.get(Constants.STAGE_WARP), x*8, y*8);
+                				batch.draw(GfxManager.get(Constants.STAGE_WARP), x*Constants.TILE_SIZE, y*Constants.TILE_SIZE);
                 			}
                 		}	
                 		//if (Stage.get(x,y)==3)
@@ -202,7 +202,7 @@ import com.badlogic.gdx.math.Vector2;
                     //batch.draw(stageSprite, 0,8);
                     
                     ActorManager.draw(batch);
-                    InventoryManager.draw(batch);
+                    //InventoryManager.draw(batch);
                     
                     //batch.draw(pacmanSprite, pacman.getScreenX(), pacman.getScreenY());
                     //batch.draw(blinkySprite, blinky.getScreenX(), blinky.getScreenY());

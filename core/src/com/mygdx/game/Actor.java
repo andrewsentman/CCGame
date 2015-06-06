@@ -1,5 +1,7 @@
 package com.mygdx.game;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 
@@ -12,10 +14,23 @@ public class Actor {
 	int direction;
 	int sprite;
 	boolean collisions=true;
-	static final int[] lX= {0,0,0,4,2,2,2,2};
-	static final int[] lY= {3,3,3,4,1,1,1,1};
+	static ArrayList<Integer> lX = new ArrayList<Integer>();//= {0,0,0,0,0,0,0,0,0,0,0,4,2,2,2,2,2,2,2,2,2,2,2,2};
+	static ArrayList<Integer> lY = new ArrayList<Integer>();//= {3,3,3,3,3,3,3,3,3,3,3,4,1,1,1,1,1,1,1,1,1,1,1,1};
 
 	public Actor(int sprite) {
+		for (int i=0; i<Constants.TILE_SIZE; i++)
+		{
+			if (i<(Constants.TILE_SIZE/2)) {
+				lX.add(0);
+				lY.add(3);
+			} else if (i>(Constants.TILE_SIZE/2)) {
+				lX.add(2);
+				lY.add(1);
+			} else {
+				lX.add(4);
+				lY.add(4);
+			}
+		}
 		this.sprite=sprite;
 	}
 
@@ -27,11 +42,11 @@ public class Actor {
 	}
 
 	int getScreenX() {
-		return this.tileX*8+this.pixelX-3;
+		return this.tileX*Constants.TILE_SIZE+this.pixelX-((Constants.TILE_SIZE/2)-1);
 	}
 
 	int getScreenY() {
-		return this.tileY*8+this.pixelY-3;
+		return this.tileY*Constants.TILE_SIZE+this.pixelY-((Constants.TILE_SIZE/2)-1);
 	}
 	
 	void tickAI()
@@ -47,23 +62,23 @@ public class Actor {
 		this.move(this.direction);
 		if (this.pixelY<0)
 		{
-			this.pixelY=7;
+			this.pixelY=(Constants.TILE_SIZE-1);
 			this.tileY-=1;
 			this.enterTile();
 		}
 		if (this.pixelX<0)
 		{
-			this.pixelX=7;
+			this.pixelX=(Constants.TILE_SIZE-1);
 			this.tileX-=1;
 			this.enterTile();
 		}
-		if (this.pixelY>7)
+		if (this.pixelY>(Constants.TILE_SIZE-1))
 		{
 			this.pixelY=0;
 			this.tileY+=1;
 			this.enterTile();
 		}
-		if (this.pixelX>7)
+		if (this.pixelX>(Constants.TILE_SIZE-1))
 		{
 			this.pixelX=0;
 			this.tileX+=1;

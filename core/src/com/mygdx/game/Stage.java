@@ -37,17 +37,17 @@ public class Stage {
 		Stage.blocks=Map.blocks(map);
 		ActorManager.clear();
 		ActorManager.addInputActor(new Pacman(Constants.SPRITE_PACMAN,20), 0);
-		ActorManager.inputActors.get(0).put(x, y, 3, 3);
+		ActorManager.inputActors.get(0).put(x, y, ((Constants.TILE_SIZE/2)-1), ((Constants.TILE_SIZE/2)-1));
 		for (int[] enemy : Map.enemies(map))
 		{
 			Enemy ac = EnemyManager.getEnemy(enemy[2]);
-			ac.put(enemy[0], enemy[1], 3, 3);
+			ac.put(enemy[0], enemy[1], ((Constants.TILE_SIZE/2)-1), ((Constants.TILE_SIZE/2)-1));
 			ActorManager.add(ac);
 		}
 		for (int[] item : Map.items(map))
 		{
 			Item ac = new Item(item[2]);
-			ac.put(item[0], item[1], 3, 3);
+			ac.put(item[0], item[1], ((Constants.TILE_SIZE/2)-1), ((Constants.TILE_SIZE/2)-1));
 			ActorManager.add(ac);
 		}
 	}

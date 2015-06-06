@@ -22,11 +22,11 @@ public class InventoryManager {
 	}
 	static void draw(SpriteBatch batch)
 	{
-		batch.draw(GfxManager.get(Constants.ITEM_BORDER),14*active,Stage.height*8+4);
+		batch.draw(GfxManager.get(Constants.ITEM_BORDER),14*active,Stage.height*Constants.TILE_SIZE+4);
 		for (int i=0;i<4;i++)
 		{
 			if (qtys[i]>0)
-				batch.draw(GfxManager.get(Constants.ITEM_SPRITES[items[i]]),4+14*i,Stage.height*8+8);
+				batch.draw(GfxManager.get(Constants.ITEM_SPRITES[items[i]]),4+14*i,Stage.height*Constants.TILE_SIZE+8);
 		}
 	}
 	static boolean pickUp(int id) {

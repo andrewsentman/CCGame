@@ -34,14 +34,6 @@ public class Bullet extends Actor {
 		}
 	}
 	
-	int getScreenX() {
-		return this.tileX*8+this.pixelX-3;
-	}
-
-	int getScreenY() {
-		return this.tileY*8+this.pixelY-3;
-	}
-	
 	@Override
 	void move(int dir) {
 		this.pixelX+=2*Direction.oX[dir];
