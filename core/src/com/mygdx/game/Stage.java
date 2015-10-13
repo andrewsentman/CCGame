@@ -2,11 +2,15 @@ package com.mygdx.game;
 
 import java.util.Arrays;
 
+import com.qwertyzzz18.ccgame.editor.GameMap;
+
 public class Stage {
 	static int width;
 	static int height;
 	static int[] blocks;
 	static int curmap;
+	static GameMap map;
+	
 	static void resetStage()
 	{
 		Stage.respawn(0);
@@ -52,6 +56,7 @@ public class Stage {
 		}
 	}
 	static int get(int x, int y) {
+	    //return map.getStage(curmap).getTile(x, y).getTid();
 		int idx=x+y*Stage.width;
 		return blocks[idx];
 	}

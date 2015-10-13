@@ -2,7 +2,10 @@
 
     package com.mygdx.game;
      
-    import java.util.Arrays;
+    import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -16,6 +19,8 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
+import com.google.gson.Gson;
+import com.qwertyzzz18.ccgame.editor.GameMap;
      
     public class MyGdxGame extends ApplicationAdapter {
             SpriteBatch batch;
@@ -80,6 +85,8 @@ import com.badlogic.gdx.math.Vector2;
                     GfxManager.add(atlas.findRegion("stage_warp"), Constants.STAGE_WARP);
                     GfxManager.add(atlas.findRegion("bullet"), Constants.SPRITE_BULLET);
                     GfxManager.add(atlas.findRegion("itemborder"), Constants.ITEM_BORDER);
+                    
+                    load();
                     
                     Stage.resetStage();
                     
@@ -189,7 +196,21 @@ import com.badlogic.gdx.math.Vector2;
                 	}
                 }
             }
-           
+            public void load() {
+                try
+                {
+                    String json = new String(Files.readAllBytes(Paths.get(("map.json"))));
+                    System.out.println(json);
+                    Gson gson = new Gson();
+                    Stage.map = gson.fromJson(json, GameMap.class);
+                    Stage.map.clean();
+                } catch (IOException e)
+                {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+
+            }
             @Override
             public void render () {
                     update();

@@ -1,0 +1,149 @@
+{
+  "stages" : [ {
+    "id" : 0,
+    "x" : 6,
+    "y" : 7,
+    "name" : "level1",
+    "dirty" : false,
+    "width" : 4,
+    "height" : 4,
+    "tiles" : {
+      "0 0" : {
+        "tid" : 0,
+        "params" : { },
+        "dirty" : false
+      },
+      "0 1" : {
+        "tid" : 4,
+        "params" : { },
+        "dirty" : false
+      },
+      "1 0" : {
+        "tid" : 1,
+        "params" : { },
+        "dirty" : false
+      },
+      "0 2" : {
+        "tid" : 8,
+        "params" : { },
+        "dirty" : false
+      },
+      "1 1" : null,
+      "2 0" : {
+        "tid" : 2,
+        "params" : { },
+        "dirty" : false
+      },
+      "0 3" : {
+        "tid" : 12,
+        "params" : { },
+        "dirty" : false
+      },
+      "1 2" : null,
+      "2 1" : null,
+      "3 0" : {
+        "tid" : 3,
+        "params" : { },
+        "dirty" : false
+      },
+      "1 3" : {
+        "tid" : 13,
+        "params" : { },
+        "dirty" : false
+      },
+      "2 2" : null,
+      "3 1" : {
+        "tid" : 7,
+        "params" : { },
+        "dirty" : false
+      },
+      "2 3" : {
+        "tid" : 14,
+        "params" : { },
+        "dirty" : false
+      },
+      "3 2" : {
+        "tid" : 11,
+        "params" : { },
+        "dirty" : false
+      },
+      "3 3" : {
+        "tid" : 15,
+        "params" : { },
+        "dirty" : false
+      }
+    }
+  }, {
+    "id" : 1,
+    "x" : 9,
+    "y" : 10,
+    "name" : "level2",
+    "dirty" : false,
+    "width" : 4,
+    "height" : 4,
+    "tiles" : { }
+  }, {
+    "id" : 2,
+    "x" : 5,
+    "y" : 11,
+    "name" : "level3",
+    "dirty" : false,
+    "width" : 6,
+    "height" : 6,
+    "tiles" : {
+      "2 1" : {
+        "tid" : 0,
+        "params" : {
+          "layer" : "12"
+        },
+        "dirty" : false
+      },
+      "0 1" : {
+        "tid" : 0,
+        "params" : { },
+        "dirty" : false
+      },
+      "2 3" : {
+        "tid" : 0,
+        "params" : { },
+        "dirty" : false
+      },
+      "4 1" : {
+        "tid" : 0,
+        "params" : { },
+        "dirty" : false
+      }
+    }
+  }, {
+    "id" : 3,
+    "x" : 12,
+    "y" : 3,
+    "name" : "test5",
+    "dirty" : true,
+    "width" : 6,
+    "height" : 6,
+    "tiles" : {
+      "1 1" : {
+        "tid" : 64,
+        "params" : { },
+        "dirty" : true
+      },
+      "2 3" : {
+        "tid" : 64,
+        "params" : {
+          "layer" : "2"
+        },
+        "dirty" : true
+      },
+      "4 1" : {
+        "tid" : 64,
+        "params" : { },
+        "dirty" : true
+      }
+    }
+  } ],
+  "width" : 16,
+  "height" : 16,
+  "nextID" : 4,
+  "dirty" : true
+}
