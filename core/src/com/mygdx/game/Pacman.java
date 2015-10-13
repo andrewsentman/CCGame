@@ -51,7 +51,7 @@ public class Pacman extends InputActor{
 	void move(int dir) {
 		if (this.halted)
 			return;
-		if (Stage.get(this.tileX+Direction.oX[dir],this.tileY+Direction.oY[dir])!=1 || 
+		if (Stage.get(this.tileX+Direction.oX[dir],this.tileY+Direction.oY[dir]).getParam("solid")=="0" || 
 									((lX.get(this.pixelX)==dir) || (lY.get(this.pixelY)==dir)))
 		{
 			this.pixelX+=Direction.oX[dir];

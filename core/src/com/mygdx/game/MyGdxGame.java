@@ -21,6 +21,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
 import com.google.gson.Gson;
 import com.qwertyzzz18.ccgame.editor.GameMap;
+import com.qwertyzzz18.ccgame.editor.SpriteManager;
      
     public class MyGdxGame extends ApplicationAdapter {
             SpriteBatch batch;
@@ -85,6 +86,8 @@ import com.qwertyzzz18.ccgame.editor.GameMap;
                     GfxManager.add(atlas.findRegion("stage_warp"), Constants.STAGE_WARP);
                     GfxManager.add(atlas.findRegion("bullet"), Constants.SPRITE_BULLET);
                     GfxManager.add(atlas.findRegion("itemborder"), Constants.ITEM_BORDER);
+                    
+                    SpriteManager.init();
                     
                     load();
                     
@@ -162,6 +165,7 @@ import com.qwertyzzz18.ccgame.editor.GameMap;
             }
             void updateScoring()
             {
+                /*
             	Pacman pacman=(Pacman) ActorManager.inputActors.get(0);
             	if (Stage.get(pacman.tileX, pacman.tileY)==2)
             	{
@@ -172,29 +176,11 @@ import com.qwertyzzz18.ccgame.editor.GameMap;
             	{
             		Stage.set(pacman.tileX, pacman.tileY,0);
             		score.eatPowerup();
-            	}
+            	}*/
             }
             
             public void drawStage(){
-            	for (int x=0; x<Stage.width; x++)
-                {
-                	for (int y=0; y<Stage.height; y++)
-                	{
-                		if (Stage.get(x, y)==0)
-                			batch.draw(GfxManager.get(Constants.STAGE_GRASS), x*Constants.TILE_SIZE, y*Constants.TILE_SIZE);
-                		if (Stage.get(x, y)==1)
-                			batch.draw(GfxManager.get(Constants.STAGE_WALL), x*Constants.TILE_SIZE, y*Constants.TILE_SIZE);
-                		for (int[] warp : Map.warps(Stage.curmap))
-                		{
-                			if ((warp[0]==x)&&(warp[1]==y))
-                			{
-                				batch.draw(GfxManager.get(Constants.STAGE_WARP), x*Constants.TILE_SIZE, y*Constants.TILE_SIZE);
-                			}
-                		}	
-                		//if (Stage.get(x,y)==3)
-                			//batch.draw(GfxManager.get(Constants.SPRITE_POWERUP), x*8, y*8+8);
-                	}
-                }
+                Stage.render(batch);
             }
             public void load() {
                 try
@@ -240,11 +226,11 @@ import com.qwertyzzz18.ccgame.editor.GameMap;
                     pfont.draw(batch, ""+pacman.pixelX, 340, 540);
                     pfont.draw(batch, ""+pacman.pixelY, 340, 500);
                     pfont.draw(batch, Direction.names[pacman.direction], 320, 520);
-                    pfont.draw(batch, ""+Stage.get(pacman.tileX, pacman.tileY), 420, 520);
-                    pfont.draw(batch, ""+Stage.get(pacman.tileX-1, pacman.tileY), 400, 520);
-                    pfont.draw(batch, ""+Stage.get(pacman.tileX+1, pacman.tileY), 440, 520);
-                    pfont.draw(batch, ""+Stage.get(pacman.tileX, pacman.tileY-1), 420, 500);
-                    pfont.draw(batch, ""+Stage.get(pacman.tileX, pacman.tileY+1), 420, 540);
+                    pfont.draw(batch, ""+Stage.get(pacman.tileX, pacman.tileY).getParam("solid"), 420, 520);
+                    pfont.draw(batch, ""+Stage.get(pacman.tileX-1, pacman.tileY).getParam("solid"), 400, 520);
+                    pfont.draw(batch, ""+Stage.get(pacman.tileX+1, pacman.tileY).getParam("solid"), 440, 520);
+                    pfont.draw(batch, ""+Stage.get(pacman.tileX, pacman.tileY-1).getParam("solid"), 420, 500);
+                    pfont.draw(batch, ""+Stage.get(pacman.tileX, pacman.tileY+1).getParam("solid"), 420, 540);
                     
                     /*bfont.draw(batch, ""+blinky.tileX, 300, 440);
                     bfont.draw(batch, ""+blinky.tileY, 300, 400);

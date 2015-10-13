@@ -18,5 +18,5 @@ public class Constants {
 	static final int STAGE_WARP = 11;
 	static final int ITEM_BORDER = 12;
 	static final int[] ITEM_SPRITES = {1,11,4,5};
-	public static final int TILE_SIZE = 24;
+	public static final int TILE_SIZE = 35;
 }

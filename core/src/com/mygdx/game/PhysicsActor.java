@@ -8,7 +8,7 @@ public class PhysicsActor extends Actor{
 	}
 
 	void move(int dir) {
-		if (Stage.get(this.tileX+Direction.oX[dir],this.tileY+Direction.oY[dir])!=1 || 
+		if (Stage.get(this.tileX+Direction.oX[dir],this.tileY+Direction.oY[dir]).getParam("solid")!="1" || 
 				(((this.pixelX<Constants.TILE_SIZE?0:(this.pixelX>Constants.TILE_SIZE?2:4))==dir) || ((this.pixelY<Constants.TILE_SIZE?3:(this.pixelY>Constants.TILE_SIZE?1:4))==dir)) ||
 									this.collisions==false)
 		{

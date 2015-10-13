@@ -15,7 +15,7 @@ import com.google.gson.reflect.TypeToken;
 public class SpriteManager {
     static ArrayList<SpriteStorage> sprites;
     static Map<Integer,TextureRegion> textures;
-    static void init()
+    public static void init()
     {
         textures=new HashMap<Integer,TextureRegion>();
             try
@@ -33,7 +33,7 @@ public class SpriteManager {
                 textures.put(s.id,new TextureRegion(new Texture(s.name)));
             }
     }
-    static TextureRegion getSprite(int id)
+    public static TextureRegion getSprite(int id)
     {
         if (textures.get(id)==null)
         {

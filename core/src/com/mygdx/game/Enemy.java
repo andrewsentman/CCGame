@@ -78,13 +78,13 @@ public class Enemy extends PhysicsActor {
 		dl=distanceToTarget(-1,0);
 		dr=distanceToTarget(1,0);
 		
-		if ((Stage.get(this.tileX,this.tileY+1)==1) || (this.direction==Direction.DOWN))
+		if ((Stage.get(this.tileX,this.tileY+1).getParam("solid")=="1") || (this.direction==Direction.DOWN))
 			du=Double.MAX_VALUE;
-		if ((Stage.get(this.tileX,this.tileY-1)==1) || (this.direction==Direction.UP))
+		if ((Stage.get(this.tileX,this.tileY-1).getParam("solid")=="1") || (this.direction==Direction.UP))
 			dd=Double.MAX_VALUE;
-		if ((Stage.get(this.tileX-1,this.tileY)==1) || (this.direction==Direction.RIGHT))
+		if ((Stage.get(this.tileX-1,this.tileY).getParam("solid")=="1") || (this.direction==Direction.RIGHT))
 			dl=Double.MAX_VALUE;
-		if ((Stage.get(this.tileX+1,this.tileY)==1) || (this.direction==Direction.LEFT))
+		if ((Stage.get(this.tileX+1,this.tileY).getParam("solid")=="1") || (this.direction==Direction.LEFT))
 			dr=Double.MAX_VALUE;
 		
 		double minval=Math.min(Math.min(du,dd), Math.min(dl, dr));
